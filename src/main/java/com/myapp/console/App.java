@@ -19,12 +19,13 @@ public class App {
 
 	public static void main(String[] args) {
 		Args argv = new Args();
-		JCommander.newBuilder()
+		JCommander jCommander = JCommander.newBuilder()
 				.addObject(argv)
-				.build()
-				.parse(args);
+				.build();
+		jCommander.parse(args);
 		if (argv.isHelp()) {
-			System.out.println(getHelpMessage());
+			jCommander.setProgramName("File Statistic");
+			jCommander.usage();
 			return;
 		}
 
@@ -109,16 +110,6 @@ public class App {
 		} catch (Exception e) {
 			return "";
 		}
-	}
-
-	private static String getHelpMessage() {
-		return "usage: file-stat [--directory] [--recursive] [--help]\n" +
-				"					[--path[=<path>]]\n"+
-				"	 -p --path		<file search path of directories >\n" +
-				"                  	 A , separated list of directories\n"+
-				"    -r --recursive find files in directory with recursion\n" +
-				"    -d --directory find files in directory\n" +
-				"    -h --help      print this help message";
 	}
 
 	private static Void errorHandle(Throwable  e){
