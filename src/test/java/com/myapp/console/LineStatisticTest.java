@@ -19,6 +19,8 @@ public class LineStatisticTest {
 		assertEquals("Should be 14", 14, result);
 	}
 
+
+
 	@Test
 	public void getLengthLongestWordInEmptyLineTest() {
 		LineStatistic lineStatistic = new LineStatistic();
